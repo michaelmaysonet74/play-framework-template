@@ -1,13 +1,13 @@
 package clients
 
-import play.api.libs.ws.StandaloneWSRequest
-import play.api.libs.ws.ahc.StandaloneAhcWSClient
+import play.api.libs.ws.WSClient
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class TemplateClient()(
-  implicit ec: ExecutionContext,
-  implicit val ws: StandaloneAhcWSClient
+class TemplateClient(
+  ws: WSClient
+)(implicit
+  ec: ExecutionContext
 ) {
 
   def getGoogleStatus: Future[String] =

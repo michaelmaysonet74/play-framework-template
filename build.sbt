@@ -1,27 +1,24 @@
-import play.sbt.PlayImport.PlayKeys._
+//import play.sbt.PlayImport.PlayKeys._
 import com.typesafe.sbt.packager.docker._
-
-val macwireVersion = "2.5.7"
-val playWsStandaloneVersion = "2.1.10"
 
 lazy val server = (project in file("."))
   .enablePlugins(PlayScala)
   .settings(
     name := """play-framework-template""",
     organization := "com.michaelmaysonet74",
-    version := "1.1.1",
+    version := "1.1.2",
     scalaVersion := "2.13.8",
-    libraryDependencies ++= Seq(
-      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
-      "com.softwaremill.macwire" %% "macros" % macwireVersion % Provided,
-      "com.softwaremill.macwire" %% "util" % macwireVersion,
-      "com.typesafe.play" %% "play-ahc-ws-standalone" % playWsStandaloneVersion,
-      "com.typesafe.play" %% "play-ws-standalone-json" % playWsStandaloneVersion
-    )
+    libraryDependencies ++= {
+      val macwireVersion = "2.5.7"
+
+      Seq(
+        "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
+        "com.softwaremill.macwire" %% "macros" % macwireVersion % Provided,
+        "com.softwaremill.macwire" %% "util" % macwireVersion,
+        ws
+      )
+    }
   )
-  // .settings(
-  //   playDefaultPort := 9000
-  // )
   .settings(
     dockerExposedPorts ++= Seq(9000),
     dockerChmodType := DockerChmodType.UserGroupWriteExecute,
@@ -30,3 +27,6 @@ lazy val server = (project in file("."))
       "APPLICATION_SECRET" -> sys.env.getOrElse("APPLICATION_SECRET", "")
     )
   )
+// .settings(
+//   playDefaultPort := 9000
+// )
