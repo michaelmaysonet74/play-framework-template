@@ -1,6 +1,6 @@
 package controllers
 
-import models.TemplateModel
+import models.TemplateResponse
 import services.TemplateService
 import play.api.libs.json.Json
 import play.api.mvc.{AbstractController, Action, AnyContent, ControllerComponents, Result}
@@ -18,7 +18,7 @@ class TemplateController(
     Action.async {
       templateService.getStatus.map { status =>
         Ok(
-          Json.toJson(TemplateModel(status))
+          Json.toJson(TemplateResponse(status))
         )
       }
     }

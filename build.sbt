@@ -9,7 +9,7 @@ lazy val server = (project in file("."))
   .settings(
     name := """play-framework-template""",
     organization := "com.michaelmaysonet74",
-    version := "1.1.0",
+    version := "1.1.1",
     scalaVersion := "2.13.8",
     libraryDependencies ++= Seq(
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
@@ -26,5 +26,7 @@ lazy val server = (project in file("."))
     dockerExposedPorts ++= Seq(9000),
     dockerChmodType := DockerChmodType.UserGroupWriteExecute,
     dockerPermissionStrategy := DockerPermissionStrategy.CopyChown,
-    dockerEnvVars := Map()
+    dockerEnvVars := Map(
+      "APPLICATION_SECRET" -> sys.env.getOrElse("APPLICATION_SECRET", "")
+    )
   )
