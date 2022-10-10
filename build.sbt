@@ -13,9 +13,11 @@ lazy val server = (project in file("."))
       Seq(
         "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test,
         "com.softwaremill.macwire" %% "macros" % macwireVersion % Provided,
-        "com.softwaremill.macwire" %% "util" % macwireVersion
+        "com.softwaremill.macwire" %% "util" % macwireVersion,
+        ws
       )
-    }
+    },
+    playDefaultPort := 9000
   )
   .settings(
     dockerExposedPorts ++= Seq(9000),
@@ -24,8 +26,4 @@ lazy val server = (project in file("."))
     dockerEnvVars := Map(
       "APPLICATION_SECRET" -> sys.env.getOrElse("APPLICATION_SECRET", "")
     )
-  )
-  .settings(
-    playDefaultPort := 9000,
-    libraryDependencies += ws
   )
