@@ -23,3 +23,5 @@ project/metals.sbt
 .bloop
 
 .bsp
+.env
+/logs

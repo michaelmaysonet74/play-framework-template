@@ -15,6 +15,7 @@ class TemplateServiceImpl(
   ec: ExecutionContext
 ) extends TemplateService {
 
-  override def getStatus: Future[String] = templateClient.getGoogleStatus
+  override def getStatus: Future[String] =
+    templateClient.getStatus("https://www.apple.com")
 
 }

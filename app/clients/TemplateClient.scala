@@ -10,8 +10,8 @@ class TemplateClient(
   ec: ExecutionContext
 ) {
 
-  def getGoogleStatus: Future[String] =
-    ws.url("https://www.google.com")
+  def getStatus(url: String): Future[String] =
+    ws.url(url)
       .get()
       .map(res => s"${res.status} ${res.statusText}")
 
