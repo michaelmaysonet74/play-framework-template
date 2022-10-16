@@ -1,6 +1,7 @@
 package services
 
 import clients.TemplateClient
+
 import scala.concurrent.{ExecutionContext, Future}
 
 trait TemplateService {
