@@ -10,6 +10,7 @@ ThisBuild / organizationName := "michaelmaysonet74"
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala)
   .settings(
+    name := """play-framework-template""",
     libraryDependencies ++= {
       val macwireVersion = "2.5.7"
       Seq(
