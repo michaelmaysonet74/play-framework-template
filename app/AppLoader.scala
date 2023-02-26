@@ -7,6 +7,7 @@ import play.api.{Application, ApplicationLoader, BuiltInComponentsFromContext, L
 import play.api.routing.Router
 import play.api.libs.ws.ahc.AhcWSComponents
 import play.filters.HttpFiltersComponents
+import router.Routes
 
 import scala.concurrent.ExecutionContext
 

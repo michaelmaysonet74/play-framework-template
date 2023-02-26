@@ -3,6 +3,7 @@ package models
 import play.api.libs.json.{Json, OWrites}
 
 final case class TemplateResponse(
+  url: String,
   status: String
 )
 

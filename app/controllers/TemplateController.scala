@@ -18,9 +18,9 @@ class TemplateController(
 
   def getStatus(url: String): Action[AnyContent] =
     Action.async {
-      logger.info("GET /")
+      logger.info(s"GET /rest/status?url=$url")
       templateService.getStatus(url).map { status =>
-        Ok(Json.toJson(TemplateResponse(status)))
+        Ok(Json.toJson(TemplateResponse(url, status)))
       }
     }
 
