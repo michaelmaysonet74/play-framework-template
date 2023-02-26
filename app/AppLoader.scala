@@ -1,5 +1,3 @@
-package loader
-
 import modules.TemplateModule
 import com.softwaremill.macwire.wire
 import play.api.ApplicationLoader.Context
