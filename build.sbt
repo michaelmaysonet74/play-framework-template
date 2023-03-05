@@ -12,7 +12,6 @@ lazy val root = (project in file("."))
   .settings(
     name := """play-framework-template""",
     libraryDependencies ++= {
-      val macwireVersion = "2.5.7"
       Seq(
         scalaTest % Test,
         macwireMacros % Provided,
